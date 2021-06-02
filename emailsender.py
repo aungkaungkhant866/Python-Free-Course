@@ -42,8 +42,8 @@ class Main(MDApp):
         subject = self.data.ids.subject.text
         mail = self.data.ids.content.text
 
-        sender_email = "aungkaungkhant866@gmail.com"
-        password = "aung@192"
+        sender_email = "youremail@gmail.com"
+        password = "youremailpassword"
         message = "Subject: {0}\n\n{1}".format(subject,mail)
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
