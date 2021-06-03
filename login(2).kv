@@ -1,0 +1,136 @@
+Manager:
+    MainScreen:
+    Login:
+    SignUp:
+    Home:
+
+<MainScreen>:
+    name: "main"
+
+    MDScreen:
+        MDRoundFlatIconButton:
+            id: btn
+            icon: "account"
+            text: "Login/Sign Up"
+            pos_hint: {"center_x":.5, "center_y":.5}
+            on_release:
+                if btn.text == "Home": app.root.current = "home"
+                else: app.root.current = "login"
+                root.manager.transition.direction = "left"
+
+<Login>:
+    name: "login"
+
+    MDScreen:
+
+        MDLabel:
+            id: success
+            text: ""
+            pos_hint: {"center_x":.5, "center_y":.9}
+
+        MDTextField:
+            id: email
+            icon_right: "email"
+            hint_text: "Email Address"
+            mode: "rectangle"
+            pos_hint: {"center_x":.5, "center_y":.8}
+
+        MDTextField:
+            id: password
+            icon_right: 'eye-off'
+            password: True
+            hint_text: "Password"
+            mode: "rectangle"
+            pos_hint: {"center_x":.5, "center_y":.7}
+
+        MDRectangleFlatIconButton:
+            icon: "account-arrow-right-outline"
+            text: "Login"
+            pos_hint: {"center_x":.5, "center_y":.6}
+            on_press: app.login()
+
+        MDTextButton:
+            text: "Back"
+            pos_hint: {"center_x":.5, "center_y":.4}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+        MDRoundFlatIconButton:
+            icon: "account-plus"
+            text: "Sign Up"
+            pos_hint: {"center_x":.5, "center_y":.3}
+            on_release:
+                app.root.current = "signup"
+                root.manager.transition.direction = "up"
+
+<SignUp>:
+    name: "signup"
+
+    MDScreen:
+
+        MDLabel:
+            id: success
+            text: ""
+            pos_hint: {"center_x":.5, "center_y":.9}
+
+        MDTextField:
+            id: username
+            icon_right: "account-circle"
+            hint_text: "Username"
+            mode: "rectangle"
+            pos_hint: {"center_x":.5, "center_y":.8}
+
+        MDTextField:
+            id: email
+            icon_right: "email"
+            hint_text: "Email Address"
+            mode: "rectangle"
+            pos_hint: {"center_x":.5, "center_y":.7}
+
+        MDTextField:
+            id: password
+            icon_right: 'eye-off'
+            password: True
+            hint_text: "Password"
+            mode: "rectangle"
+            pos_hint: {"center_x":.5, "center_y":.6}
+
+        MDRoundFlatIconButton:
+            icon: "account-plus"
+            text: "Sign Up"
+            pos_hint: {"center_x":.5, "center_y":.5}
+            on_press: app.signup()
+
+        MDTextButton:
+            text: "Back"
+            pos_hint: {"center_x":.5, "center_y":.3}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+        MDRoundFlatIconButton:
+            icon: "account-arrow-right-outline"
+            text: "Login"
+            pos_hint: {"center_x":.5, "center_y":.2}
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+
+<Home>:
+    name: "home"
+
+    MDScreen:
+
+        MDLabel:
+            id: username
+            text: "Welcome"
+            halign: "center"
+
+        MDTextButton:
+            text: "Logout"
+            pos_hint: {"center_x":.5, "center_y":.3}
+            on_press: app.logout()
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
